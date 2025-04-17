@@ -1,0 +1,209 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wanderlust - Plan Your Trip</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <a href="index.html" class="logo">Wanderlust</a>
+                <ul class="nav-menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="destinations.html">Destinations</a></li>
+                    <li><a href="plan-trip.html" class="active">Plan Your Trip</a></li>
+                    <li><a href="dashboard.html">Dashboard</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="profile.html">My Profile</a></li>
+                </ul>
+                <div class="hamburger">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="trip-planner-hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Plan Your Perfect Trip</h1>
+                <p>Create your ideal travel itinerary with our easy-to-use trip planner</p>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="trip-planner">
+        <div class="container">
+            <div class="planner-container destination-card">
+                <form class="trip-form" action="plan-trip.php" method="post">
+                    >
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="destination">Destination</label>
+                            <input type="text" id="destination" placeholder="Where do you want to go?" class="enhanced-input">
+                        </div>
+                        <div class="form-group">
+                            <label for="travelers">Number of Travelers</label>
+                            <input type="number" id="travelers" min="1" value="2" class="enhanced-input">
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="departure-date">Departure Date</label>
+                            <input type="date" id="departure-date" name="departure-date" class="enhanced-input">
+                        </div>
+                        <div class="form-group">
+                            <label for="return-date">Return Date</label>
+                            <input type="date" id="return-date" name="return-date" class="enhanced-input">
+                        </div>
+                    </div>                    
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="budget">Budget Range</label>
+                            <select id="budget" class="enhanced-select">
+                                <option value="">Select Budget</option>
+                                <option value="economy">Economy</option>
+                                <option value="standard">Standard</option>
+                                <option value="luxury">Luxury</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="trip-type">Trip Type</label>
+                            <select id="trip-type" class="enhanced-select">
+                                <option value="">Select Trip Type</option>
+                                <option value="beach">Beach Vacation</option>
+                                <option value="city">City Exploration</option>
+                                <option value="adventure">Adventure</option>
+                                <option value="culture">Cultural Experience</option>
+                                <option value="relaxation">Relaxation</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Interests & Activities</label>
+                        <div class="checkbox-group">
+                            <label class="checkbox-label"><input type="checkbox" name="interests" value="sightseeing"> <span>Sightseeing</span></label>
+                            <label class="checkbox-label"><input type="checkbox" name="interests" value="food"> <span>Food & Dining</span></label>
+                            <label class="checkbox-label"><input type="checkbox" name="interests" value="outdoor"> <span>Outdoor Activities</span></label>
+                            <label class="checkbox-label"><input type="checkbox" name="interests" value="museums"> <span>Museums & Culture</span></label>
+                            <label class="checkbox-label"><input type="checkbox" name="interests" value="nightlife"> <span>Nightlife</span></label>
+                            <label class="checkbox-label"><input type="checkbox" name="interests" value="shopping"> <span>Shopping</span></label>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="special-requests">Special Requests or Requirements</label>
+                        <textarea id="special-requests" rows="4" placeholder="Tell us about any special requirements or preferences for your trip..." class="enhanced-textarea"></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn plan-trip-btn">Create My Trip Plan</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <section class="trip-tips">
+        <div class="container">
+            <div class="section-title">
+                <h2>Travel Planning Tips</h2>
+                <p>Expert advice to help you plan the perfect trip</p>
+            </div>
+            <div class="tips-container">
+                <div class="tip-card destination-card">
+                    <div class="tip-icon">
+                        <i class="fas fa-calendar-alt"></i>
+                    </div>
+                    <h3>Book in Advance</h3>
+                    <p>For the best rates and availability, book your flights and accommodations at least 3 months in advance.</p>
+                </div>
+                <div class="tip-card destination-card">
+                    <div class="tip-icon">
+                        <i class="fas fa-suitcase"></i>
+                    </div>
+                    <h3>Pack Smartly</h3>
+                    <p>Make a packing list, check the weather forecast, and pack versatile clothing items to save space.</p>
+                </div>
+                <div class="tip-card destination-card">
+                    <div class="tip-icon">
+                        <i class="fas fa-map-marked-alt"></i>
+                    </div>
+                    <h3>Research Your Destination</h3>
+                    <p>Learn about local customs, transportation options, and must-see attractions before your trip.</p>
+                </div>
+                <div class="tip-card destination-card">
+                    <div class="tip-icon">
+                        <i class="fas fa-coins"></i>
+                    </div>
+                    <h3>Budget Wisely</h3>
+                    <p>Add a 10-15% buffer to your estimated budget for unexpected expenses and souvenirs.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Wanderlust</h3>
+                    <p>Your gateway to unforgettable travel experiences and adventures around the globe.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-pinterest"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="destinations.html">Destinations</a></li>
+                        <li><a href="plan-trip.html">Plan Your Trip</a></li>
+                        <li><a href="dashboard.html">Dashboard</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="profile.html">My Profile</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Our Services</h3>
+                    <ul>
+                        <li><a href="#">Flight Booking</a></li>
+                        <li><a href="#">Hotel Reservation</a></li>
+                        <li><a href="#">Vacation Packages</a></li>
+                        <li><a href="#">Cruise Deals</a></li>
+                        <li><a href="#">Car Rentals</a></li>
+                        <li><a href="#">Travel Insurance</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> B 207B Bhaskaracharya Building</li>
+                        <li><i class="fas fa-phone"></i> +91 (222) 123-4567</li>
+                        <li><i class="fas fa-envelope"></i> wanderlust@gmail.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Wanderlust. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Profile - Wanderlust</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+    <style>
+        :root {
+            --primary-color: #2b7a78;
+            --secondary-color: #3aafa9;
+            --light-color: #def2f1;
+            --dark-color: #17252a;
+            --gray-color: #555;
+            --bg-light: #f5f5f5;
+            --card-bg: #fff;
+            --radius: 10px;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-light);
+            color: var(--dark-color);
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        header {
+            background: var(--dark-color);
+            padding: 15px 0;
+            box-shadow: var(--shadow);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: white;
+            text-decoration: none;
+        }
+
+        .nav-menu {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-menu li a {
+            text-decoration: none;
+            color: white;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-menu li a:hover,
+        .nav-menu li a.active {
+            color: var(--secondary-color);
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .hamburger div {
+            width: 25px;
+            height: 3px;
+            background-color: white;
+            margin: 4px;
+        }
+
+        .profile-header {
+            background-color: white;
+            border-radius: var(--radius);
+            margin-top: 30px;
+            padding: 30px;
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            box-shadow: var(--shadow);
+        }
+
+        .profile-stats {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: space-between;
+            margin: 30px 0;
+        }
+
+        .stat-card {
+            flex: 1 1 20%;
+            background-color: white;
+            padding: 20px;
+            border-radius: var(--radius);
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-card h3 {
+            font-size: 2rem;
+            color: var(--primary-color);
+        }
+
+        .stat-card p {
+            color: var(--gray-color);
+        }
+
+        .profile-pic img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--light-color);
+        }
+
+        .profile-info h1 {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+        }
+
+        .profile-info p {
+            color: var(--gray-color);
+        }
+
+        .profile-tabs {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            border-bottom: 2px solid var(--light-color);
+            padding-bottom: 10px;
+        }
+
+        .profile-tab {
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--radius) var(--radius) 0 0;
+            cursor: pointer;
+            background: var(--bg-light);
+            font-weight: 600;
+            color: var(--dark-color);
+            transition: all 0.3s ease;
+        }
+
+        .profile-tab:hover {
+            background: var(--light-color);
+        }
+
+        .profile-tab.active {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+
+        .card-body {
+            padding: 1.5rem;
+        }
+
+        .card-body h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+        }
+
+        .card-body p {
+            color: var(--gray-color);
+            margin-bottom: 15px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.6rem 1.2rem;
+            background: var(--secondary-color);
+            color: white;
+            border-radius: var(--radius);
+            text-decoration: none;
+            font-weight: 600;
+            transition: background 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background: var(--primary-color);
+        }
+
+        .trip-status {
+            display: inline-block;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.85rem;
+            margin-bottom: 10px;
+        }
+
+        .status-completed {
+            background-color: #d1e7dd;
+            color: #0f5132;
+        }
+
+        .status-upcoming {
+            background-color: #d1f0ff;
+            color: #0077b6;
+        }
+
+        .status-planning {
+            background-color: #fff3cd;
+            color: #664d03;
+        }
+
+        .dashboard-table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0,0,0,0.05);
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 30px;
+        }
+
+        .dashboard-table thead {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .dashboard-table th,
+        .dashboard-table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: var(--radius);
+            font-family: inherit;
+            font-size: 1rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .social-links a {
+            color: var(--secondary-color);
+            font-size: 1.2rem;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--primary-color);
+        }
+
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 40px 0 20px;
+            margin-top: 50px;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .footer-column {
+            flex: 1 1 20%;
+        }
+
+        .footer-column h3 {
+            margin-bottom: 15px;
+            color: var(--light-color);
+        }
+
+        .footer-column p,
+        .footer-column li {
+            font-size: 0.9rem;
+            line-height: 1.6;
+            color: #ddd;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-column ul li a {
+            color: #ddd;
+            text-decoration: none;
+        }
+
+        .footer-column ul li a:hover {
+            text-decoration: underline;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #444;
+            margin-top: 30px;
+            font-size: 0.85rem;
+        }
+        
+        .badge {
+            display: inline-block;
+            padding: 5px 10px;
+            background: var(--light-color);
+            color: var(--primary-color);
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-right: 5px;
+            margin-bottom: 5px;
+        }
+
+        @media (max-width: 768px) {
+            .profile-header {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .profile-stats,
+            .card-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .stat-card {
+                flex: 1 1 100%;
+            }
+            
+            .nav-menu {
+                display: none;
+            }
+            
+            .hamburger {
+                display: flex;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container navbar">
+            <a href="index.html" class="logo">Wanderlust</a>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="destinations.html">Destinations</a></li>
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="profile.html" class="active">My Profile</a></li>
+            </ul>
+            <div class="hamburger">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+    </header>
+
+    <section class="container">
+        <div class="profile-header">
+            <div class="profile-pic">
+                <img src="images/icon1.png" alt="Profile Picture" />
+            </div>
+            <div class="profile-info">
+                <h1>Kritika </h1>
+                <p>Traveler | Blogger | Dreamer</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-pinterest"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="profile-stats">
+            <div class="stat-card">
+                <h3>8</h3>
+                <p>Countries Visited</p>
+            </div>
+            <div class="stat-card">
+                <h3>5</h3>
+                <p>Total Trips</p>
+            </div>
+            <div class="stat-card">
+                <h3>2</h3>
+                <p>Upcoming Trips</p>
+            </div>
+            <div class="stat-card">
+                <h3>Rs 2,63,820</h3>
+                <p>Total Spent</p>
+            </div>
+        </div>
+
+        <div class="profile-tabs">
+            <div class="profile-tab active" onclick="switchTab(event, 'tab1')">My Trips</div>
+            <div class="profile-tab" onclick="switchTab(event, 'tab2')">Wishlist</div>
+            <div class="profile-tab" onclick="switchTab(event, 'tab3')">Reviews</div>
+        
+        </div>
+
+        <div id="tab1" class="tab-content active">
+            <h2 style="margin-bottom: 20px; color: var(--primary-color);">My Travel Journal</h2>
+            
+            <div class="card-grid">
+                <div class="card">
+                  
+                    <div class="card-body">
+                        <span class="trip-status status-upcoming">Upcoming</span>
+                        <h3>Paris Getaway</h3>
+                        <p><i class="far fa-calendar-alt"></i> May 15 - May 22, 2025</p>
+                        <p><i class="fas fa-tag"></i> Leisure</p>
+                        <a href="#" class="btn">View Details</a>
+                    </div>
+                </div>
+                
+                <div class="card">
+                   
+                    <div class="card-body">
+                        <span class="trip-status status-upcoming">Upcoming</span>
+                        <h3>Bali Dreams</h3>
+                        <p><i class="far fa-calendar-alt"></i> July 10 - July 20, 2025</p>
+                        <p><i class="fas fa-tag"></i> Beach Vacation</p>
+                        <a href="#" class="btn">View Details</a>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    
+                    <div class="card-body">
+                        <span class="trip-status status-completed">Completed</span>
+                        <h3>Cancun Beach Getaway</h3>
+                        <p><i class="far fa-calendar-alt"></i> February 1 - February 8, 2025</p>
+                        <p><i class="fas fa-tag"></i> Beach Vacation</p>
+                        <a href="#" class="btn">View Memories</a>
+                    </div>
+                </div>
+            </div>
+            
+            <h2 style="margin: 30px 0 20px; color: var(--primary-color);">Recent Activities</h2>
+            <table class="dashboard-table">
+                <thead>
+                    <tr>
+                        <th>Activity</th>
+                        <th>Date</th>
+                        <th>Details</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Booked Trip</td>
+                        <td>March 15, 2025</td>
+                        <td>Booked "Bali Retreat" for July 2025</td>
+                    </tr>
+                    <tr>
+                        <td>Updated Profile</td>
+                        <td>March 10, 2025</td>
+                        <td>Updated contact information</td>
+                    </tr>
+                    <tr>
+                        <td>Booked Trip</td>
+                        <td>February 28, 2025</td>
+                        <td>Booked "Paris Explorer" for May 2025</td>
+                    </tr>
+                    <tr>
+                        <td>Saved Destination</td>
+                        <td>February 20, 2025</td>
+                        <td>Added "Machu Picchu, Peru" to wishlist</td>
+                    </tr>
+                    <tr>
+                        <td>Trip Completed</td>
+                        <td>February 8, 2025</td>
+                        <td>Completed "Cancun Beach Getaway"</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div id="tab2" class="tab-content">
+            <h2 style="margin-bottom: 20px; color: var(--primary-color);">My Travel Wishlist</h2>
+            <div class="card-grid">
+                <div class="card">
+                  
+                    <div class="card-body">
+                        <span class="trip-status status-planning">Planning</span>
+                        <h3>Machu Picchu, Peru</h3>
+                        <p>Ancient Incan citadel set high in the Andes Mountains</p>
+                        <p><i class="far fa-calendar-alt"></i> Added on Feb 20, 2025</p>
+                        <div style="margin-bottom: 15px;">
+                            <span class="badge">Mountain</span>
+                            <span class="badge">Heritage</span>
+                            <span class="badge">Adventure</span>
+                        </div>
+                        <a href="#" class="btn">Plan Trip</a>
+                    </div>
+                </div>
+                
+                <div class="card">
+                   
+                    <div class="card-body">
+                        <span class="trip-status status-planning">Planning</span>
+                        <h3>Amsterdam, Netherlands</h3>
+                        <p>Historic canals, world-class museums, and vibrant culture</p>
+                        <p><i class="far fa-calendar-alt"></i> Added on Jan 15, 2025</p>
+                        <div style="margin-bottom: 15px;">
+                            <span class="badge">Urban</span>
+                            <span class="badge">Culture</span>
+                            <span class="badge">History</span>
+                        </div>
+                        <a href="#" class="btn">Plan Trip</a>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    
+                    <div class="card-body">
+                        <span class="trip-status status-planning">Planning</span>
+                        <h3>Tokyo, Japan</h3>
+                        <p>A fascinating blend of the ultramodern and the traditional</p>
+                        <p><i class="far fa-calendar-alt"></i> Added on Dec 10, 2024</p>
+                        <div style="margin-bottom: 15px;">
+                            <span class="badge">Urban</span>
+                            <span class="badge">Culture</span>
+                            <span class="badge">Food</span>
+                        </div>
+                        <a href="#" class="btn">Plan Trip</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="tab3" class="tab-content">
+            <h2 style="margin-bottom: 20px; color: var(--primary-color);">My Reviews & Ratings</h2>
+            
+            <div class="card" style="margin-bottom: 20px;">
+                <div class="card-body">
+                    <h3>Cancun Beach Getaway</h3>
+                    <p style="color: #ffa41b;">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                        4.5/5
+                    </p>
+                    <p>Visited February 2025</p>
+                    <p style="margin: 15px 0;">
+                        Amazing experience! The beaches were pristine and our hotel had the most incredible view. The staff was extremely friendly and helpful. Would definitely recommend for anyone looking for a relaxing beach vacation.
+                    </p>
+                    <div style="margin-bottom: 15px;">
+                        <span class="badge">Beach</span>
+                        <span class="badge">Relaxation</span>
+                        <span class="badge">Good Food</span>
+                    </div>
+                    <a href="#" class="btn">Edit Review</a>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-body">
+                    <h3>Bangkok City Explorer</h3>
+                    <p style="color: #ffa41b;">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="far fa-star"></i>
+                        4.0/5
+                    </p>
+                    <p>Visited October 2024</p>
+                    <p style="margin: 15px 0;">
+                        Bangkok was a whirlwind of excitement! From the bustling markets to the serene temples, every day was packed with amazing experiences. The street food was to die for, though the traffic was a bit overwhelming at times.
+                    </p>
+                    <div style="margin-bottom: 15px;">
+                        <span class="badge">City</span>
+                        <span class="badge">Culture</span>
+                        <span class="badge">Food</span>
+                    </div>
+                    <a href="#" class="btn">Edit Review</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Wanderlust</h3>
+                    <p>Your gateway to unforgettable travel experiences and adventures around the globe.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-pinterest"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="destinations.html">Destinations</a></li>
+                        <li><a href="dashboard.html">Dashboard</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="profile.html">My Profile</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Our Services</h3>
+                    <ul>
+                        <li><a href="#">Flight Booking</a></li>
+                        <li><a href="#">Hotel Reservation</a></li>
+                        <li><a href="#">Vacation Packages</a></li>
+                        <li><a href="#">Cruise Deals</a></li>
+                        <li><a href="#">Car Rentals</a></li>
+                        <li><a href="#">Travel Insurance</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> B 207B Bhaskaracharya Building</li>
+                        <li><i class="fas fa-phone"></i> +91 (222) 123-4567</li>
+                        <li><i class="fas fa-envelope"></i> wanderlust@gmail.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Wanderlust. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function switchTab(event, id) {
+            document.querySelectorAll('.tab-content').forEach((tab) => tab.classList.remove('active'));
+            document.querySelectorAll('.profile-tab').forEach((btn) => btn.classList.remove('active'));
+            document.getElementById(id).classList.add('active');
+            event.target.classList.add('active');
+        }
+        
+        // Mobile menu toggle functionality
+        document.querySelector('.hamburger').addEventListener('click', function() {
+            const nav = document.querySelector('.nav-menu');
+            if (nav.style.display === 'flex') {
+                nav.style.display = 'none';
+            } else {
+                nav.style.display = 'flex';
+                nav.style.flexDirection = 'column';
+                nav.style.position = 'absolute';
+                nav.style.right = '5%';
+                nav.style.top = '60px';
+                nav.style.backgroundColor = 'var(--dark-color)';
+                nav.style.padding = '20px';
+                nav.style.borderRadius = '5px';
+                nav.style.zIndex = '100';
+            }
+        });
+    </script>
+</body>
+</html>

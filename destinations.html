@@ -1,0 +1,299 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wanderlust - Destinations</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <!-- Font Awesome for icons (Loading from CDN) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <!-- Header with Navigation -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <a href="index.html" class="logo">Wanderlust</a>
+                <ul class="nav-menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="destinations.html" class="active">Destinations</a></li>
+                    <li><a href="plan-trip.html">Plan Your Trip</a></li>
+                    <li><a href="dashboard.html">Dashboard</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="profile.html">My Profile</a></li>
+                </ul>
+                <div class="hamburger">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Destinations Hero -->
+    <section class="destinations-hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Explore Amazing Destinations</h1>
+                <p>Discover breathtaking places around the world and create memories that last a lifetime.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Destinations Filter -->
+    <section class="destinations-filter">
+        <div class="container">
+            <div class="filter-container">
+                <div class="filter-group">
+                    <label for="region">Region</label>
+                    <select id="region">
+                        <option value="">All Regions</option>
+                        <option value="europe">Europe</option>
+                        <option value="asia">Asia</option>
+                        <option value="africa">Africa</option>
+                        <option value="namerica">North America</option>
+                        <option value="samerica">South America</option>
+                        <option value="oceania">Oceania</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="type">Type</label>
+                    <select id="type">
+                        <option value="">All Types</option>
+                        <option value="beach">Beach</option>
+                        <option value="mountain">Mountain</option>
+                        <option value="city">City</option>
+                        <option value="countryside">Countryside</option>
+                        <option value="historical">Historical</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="budget">Budget</label>
+                    <select id="budget">
+                        <option value="">Any Budget</option>
+                        <option value="budget">Budget</option>
+                        <option value="moderate">Moderate</option>
+                        <option value="luxury">Luxury</option>
+                    </select>
+                </div>
+                <button class="filter-button">Filter Results</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Destinations -->
+    <section class="destinations">
+        <div class="container">
+            <div class="section-title">
+                <h2>Popular Destinations</h2>
+                <p>Discover our most sought-after travel spots and exclusive deals</p>
+            </div>
+            <div class="destinations-grid">
+                <div class="destination-card">
+                    <div class="destination-img">
+                        <img src="https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Venice, Italy">
+                        <div class="destination-category">City</div>
+                    </div>
+                    <div class="destination-info">
+                        <h3>Venice, Italy</h3>
+                        <p>Explore the beautiful canals and historic architecture of this unique floating city.</p>
+                        <div class="destination-meta">
+                            <span><i class="fas fa-calendar"></i> Best time: Apr-Oct</span>
+                            <span><i class="fas fa-clock"></i> 5-7 days</span>
+                        </div>
+                        <div class="price">From Rs 2,59,900</div>
+                        <a href="#" class="btn">View Details</a>
+                    </div>
+                </div>
+                <div class="destination-card">
+                    <div class="destination-img">
+                        <img src="https://images.unsplash.com/photo-1590523277543-a94d2e4eb00b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Bali, Indonesia">
+                        <div class="destination-category">Beach</div>
+                    </div>
+                    <div class="destination-info">
+                        <h3>Bali, Indonesia</h3>
+                        <p>Experience paradise on earth with beautiful beaches, lush landscapes and vibrant culture.</p>
+                        <div class="destination-meta">
+                            <span><i class="fas fa-calendar"></i> Best time: May-Sep</span>
+                            <span><i class="fas fa-clock"></i> 7-10 days</span>
+                        </div>
+                        <div class="price">From Rs 59,900</div>
+                        <a href="#" class="btn">View Details</a>
+                    </div>
+                </div>
+                <div class="destination-card">
+                    <div class="destination-img">
+                        <img src="https://images.unsplash.com/photo-1514924013411-cbf25faa35bb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Swiss Alps">
+                        <div class="destination-category">Mountain</div>
+                    </div>
+                    <div class="destination-info">
+                        <h3>Swiss Alps</h3>
+                        <p>Discover breathtaking mountain landscapes, charming villages and outdoor adventures.</p>
+                        <div class="destination-meta">
+                            <span><i class="fas fa-calendar"></i> Best time: Dec-Mar</span>
+                            <span><i class="fas fa-clock"></i> 6-8 days</span>
+                        </div>
+                        <div class="price">From Rs 3,59,900</div>
+                        <a href="#" class="btn">View Details</a>
+                    </div>
+                </div>
+                <div class="destination-card">
+                    <div class="destination-img">
+                        <img src="https://images.unsplash.com/photo-1544085311-11a028465b03?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Kyoto, Japan">
+                        <div class="destination-category">Historical</div>
+                    </div>
+                    <div class="destination-info">
+                        <h3>Kyoto, Japan</h3>
+                        <p>Immerse yourself in traditional Japanese culture with ancient temples and beautiful gardens.</p>
+                        <div class="destination-meta">
+                            <span><i class="fas fa-calendar"></i> Best time: Mar-May</span>
+                            <span><i class="fas fa-clock"></i> 4-6 days</span>
+                        </div>
+                        <div class="price">From Rs 3,79,900</div>
+                        <a href="#" class="btn">View Details</a>
+                    </div>
+                </div>
+                <div class="destination-card">
+                    <div class="destination-img">
+                        <img src="https://images.unsplash.com/photo-1580237072617-771c3ecc4a24?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Santorini, Greece">
+                        <div class="destination-category">Island</div>
+                    </div>
+                    <div class="destination-info">
+                        <h3>Santorini, Greece</h3>
+                        <p>Enjoy stunning white and blue architecture perched on cliffs overlooking the Aegean Sea.</p>
+                        <div class="destination-meta">
+                            <span><i class="fas fa-calendar"></i> Best time: Jun-Sep</span>
+                            <span><i class="fas fa-clock"></i> 5-7 days</span>
+                        </div>
+                        <div class="price">From $1,25,987</div>
+                        <a href="#" class="btn">View Details</a>
+                    </div>
+                </div>
+                <div class="destination-card">
+                    <div class="destination-img">
+                        <img src="images/capetown.jpg" alt="Cape Town, South Africa">
+                        <div class="destination-category">City</div>
+                    </div>
+                    <div class="destination-info">
+                        <h3>Cape Town, South Africa</h3>
+                        <p>Experience the perfect blend of city, mountain, and coastal beauty in this diverse destination.</p>
+                        <div class="destination-meta">
+                            <span><i class="fas fa-calendar"></i> Best time: Nov-Mar</span>
+                            <span><i class="fas fa-clock"></i> 7-10 days</span>
+                        </div>
+                        <div class="price">Rs 3,00,000</div>
+                        <a href="#" class="btn">View Details</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Regional Destinations -->
+    <section class="destination-regions">
+        <div class="container">
+            <div class="section-title">
+                <h2>Explore By Region</h2>
+                <p>Discover amazing destinations across different parts of the world</p>
+            </div>
+            <div class="regions-grid">
+                <a href="#" class="region-card" style="background-image: url('https://images.unsplash.com/photo-1552832230-c0197dd311b5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80')">
+                    <div class="region-overlay">
+                        <h3>Europe</h3>
+                        <span>42 Destinations</span>
+                    </div>
+                </a>
+                <a href="#" class="region-card" style="background-image: url('https://images.unsplash.com/photo-1464817739973-0128fe77aaa1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80')">
+                    <div class="region-overlay">
+                        <h3>Asia</h3>
+                        <span>38 Destinations</span>
+                    </div>
+                </a>
+                <a href="#" class="region-card" style="background-image: url('https://images.unsplash.com/photo-1523805009345-7448845a9e53?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80')">
+                    <div class="region-overlay">
+                        <h3>North America</h3>
+                        <span>29 Destinations</span>
+                    </div>
+                </a>
+                <a href="#" class="region-card" style="background-image: url('https://images.unsplash.com/photo-1619546952812-520e98064a52?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80')">
+                    <div class="region-overlay">
+                        <h3>Africa</h3>
+                        <span>25 Destinations</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter">
+        <div class="container">
+            <div class="newsletter-content">
+                <h2>Get Inspiration for Your Next Trip</h2>
+                <p>Subscribe to our newsletter and receive exclusive offers, travel tips, and destination guides.</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Your Email Address" required>
+                    <button type="submit" class="btn">Subscribe</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Wanderlust</h3>
+                    <p>Your gateway to unforgettable travel experiences and adventures around the globe.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-pinterest"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="destinations.html">Destinations</a></li>
+                        <li><a href="plan-trip.html">Plan Your Trip</a></li>
+                        <li><a href="dashboard.html">Dashboard</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="profile.html">My Profile</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Our Services</h3>
+                    <ul>
+                        <li><a href="#">Flight Booking</a></li>
+                        <li><a href="#">Hotel Reservation</a></li>
+                        <li><a href="#">Vacation Packages</a></li>
+                        <li><a href="#">Cruise Deals</a></li>
+                        <li><a href="#">Car Rentals</a></li>
+                        <li><a href="#">Travel Insurance</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> B 207B Bhaskaracharya Building</li>
+                        <li><i class="fas fa-phone"></i> +91 (222) 123-4567</li>
+                        <li><i class="fas fa-envelope"></i> wanderlust@gmail.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Wannderlust. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

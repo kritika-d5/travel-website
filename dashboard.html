@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Travel Dashboard - Wanderlust</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    
+    <style>
+        :root {
+            --primary-color: #2b7a78;
+            --secondary-color: #3aafa9;
+            --light-color: #def2f1;
+            --dark-color: #17252a;
+            --gray-color: #555;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f5f5;
+            color: var(--dark-color);
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        header {
+            background-color: var(--dark-color);
+            padding: 15px 0;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            color: white;
+            font-size: 1.5rem;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .nav-menu {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-menu li a {
+            color: white;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: color 0.3s ease;
+        }
+
+        .nav-menu li a:hover,
+        .nav-menu li a.active {
+            color: var(--secondary-color);
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .hamburger div {
+            width: 25px;
+            height: 3px;
+            background-color: white;
+            margin: 4px;
+        }
+
+        .dashboard {
+            padding: 40px 0;
+        }
+
+        .dashboard-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .stats-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: space-between;
+            margin-bottom: 40px;
+        }
+
+        .stat-card {
+            flex: 1 1 20%;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        .stat-card h3 {
+            font-size: 2rem;
+            color: var(--primary-color);
+        }
+
+        .about-section {
+            margin-bottom: 40px;
+        }
+
+        .about-section h2 {
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+
+        .dashboard-table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0,0,0,0.05);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .dashboard-table thead {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .dashboard-table th,
+        .dashboard-table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+
+        .trip-status {
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9rem;
+        }
+
+        .status-upcoming {
+            background-color: #d1f0ff;
+            color: #0077b6;
+        }
+
+        .btn {
+            padding: 8px 12px;
+            background-color: var(--secondary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: var(--primary-color);
+        }
+
+        .destinations-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .destination-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            flex: 1 1 30%;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .destination-img img {
+            width: 100%;
+            height: auto;
+        }
+
+        .destination-info {
+            padding: 15px;
+            flex-grow: 1;
+        }
+
+        .destination-info h3 {
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+
+        .destination-info p {
+            color: var(--gray-color);
+            margin-bottom: 10px;
+        }
+
+        .price {
+            font-weight: bold;
+            color: var(--secondary-color);
+            margin-bottom: 10px;
+        }
+
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 40px 0 20px;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .footer-column {
+            flex: 1 1 20%;
+        }
+
+        .footer-column h3 {
+            margin-bottom: 15px;
+            color: var(--light-color);
+        }
+
+        .footer-column p,
+        .footer-column li {
+            font-size: 0.9rem;
+            line-height: 1.6;
+            color: #ddd;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-column ul li a {
+            color: #ddd;
+            text-decoration: none;
+        }
+
+        .footer-column ul li a:hover {
+            text-decoration: underline;
+        }
+
+        .social-links a {
+            margin-right: 10px;
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #444;
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 768px) {
+            .stats-container,
+            .destinations-grid,
+            .footer-content {
+                flex-direction: column;
+            }
+
+            .stat-card,
+            .destination-card,
+            .footer-column {
+                width: 100%;
+            }
+
+            .nav-menu {
+                display: none;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+        }
+    </style>
+</head>
+
+
+<body>
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <a href="index.html" class="logo">Wanderlust</a>
+                <ul class="nav-menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="destinations.html">Destinations</a></li>
+                    <li><a href="dashboard.html" class="active">Dashboard</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="profile.html">My Profile</a></li>
+                </ul>
+                <div class="hamburger">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="dashboard">
+        <div class="container">
+            <div class="dashboard-header">
+                <h1>Travel Dashboard</h1>
+                <p>Welcome back, Kritika! Here's an overview of your travel plans and activity.</p>
+            </div>
+
+            <div class="stats-container">
+                <div class="stat-card">
+                    <h3>2</h3>
+                    <p>Upcoming Trips</p>
+                </div>
+                <div class="stat-card">
+                    <h3>3</h3>
+                    <p>Past Trips</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Rs 2,63,820</h3>
+                    <p>Total Spent</p>
+                </div>
+                <div class="stat-card">
+                    <h3>8</h3>
+                    <p>Countries Visited</p>
+                </div>
+            </div>
+
+            <div class="about-section">
+                <h2>Upcoming Trips</h2>
+                <table class="dashboard-table">
+                    <thead>
+                        <tr>
+                            <th>Destination</th>
+                            <th>Dates</th>
+                            <th>Trip Type</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Paris, France</td>
+                            <td>May 15 - May 22, 2025</td>
+                            <td>Leisure</td>
+                            <td><span class="trip-status status-upcoming">Upcoming</span></td>
+                            <td><a href="#" class="btn">Details</a></td>
+                        </tr>
+                        <tr>
+                            <td>Bali, Indonesia</td>
+                            <td>July 10 - July 20, 2025</td>
+                            <td>Beach Vacation</td>
+                            <td><span class="trip-status status-upcoming">Upcoming</span></td>
+                            <td><a href="#" class="btn">Details</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="about-section">
+                <h2>Recent Activities</h2>
+                <table class="dashboard-table">
+                    <thead>
+                        <tr>
+                            <th>Activity</th>
+                            <th>Date</th>
+                            <th>Details</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Booked Trip</td>
+                            <td>March 15, 2025</td>
+                            <td>Booked "Bali Retreat" for July 2025</td>
+                        </tr>
+                        <tr>
+                            <td>Updated Profile</td>
+                            <td>March 10, 2025</td>
+                            <td>Updated contact information</td>
+                        </tr>
+                        <tr>
+                            <td>Booked Trip</td>
+                            <td>February 28, 2025</td>
+                            <td>Booked "Paris Explorer" for May 2025</td>
+                        </tr>
+                        <tr>
+                            <td>Saved Destination</td>
+                            <td>February 20, 2025</td>
+                            <td>Added "Machu Picchu, Peru" to wishlist</td>
+                        </tr>
+                        <tr>
+                            <td>Trip Completed</td>
+                            <td>February 8, 2025</td>
+                            <td>Completed "Cancun Beach Getaway"</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+           
+
+            <div class="about-section">
+                <h2>Travel Recommendations</h2>
+                <p>Based on your travel history and preferences, you might enjoy these destinations:</p>
+                <br>
+                <div class="destinations-grid">
+                    <div class="destination-card">
+                        <div class="destination-img">
+                            <img src="images/amsterdam.jpg" alt="Amsterdam" />
+                        </div>
+                        <div class="destination-info">
+                            <h3>Amsterdam, Netherlands</h3>
+                            <p>Historic canals, world-class museums, and vibrant culture in the Dutch capital.</p>
+                            <div class="price">From Rs 4,12,000</div>
+                            <a href="#" class="btn">View Details</a>
+                        </div>
+                    </div>
+                    <div class="destination-card">
+                        <div class="destination-img">
+                            <img src="images/barcelona.jpg" alt="Barcelona" />
+                        </div>
+                        <div class="destination-info">
+                            <h3>Barcelona, Spain</h3>
+                            <p>Stunning architecture, Mediterranean beaches, and delicious tapas.</p>
+                            <div class="price">From Rs 2,56,000</div>
+                            <a href="#" class="btn">View Details</a>
+                        </div>
+                    </div>
+                    <div class="destination-card">
+                        <div class="destination-img">
+                            <img src="images/prague.avif" alt="Prague" />
+                        </div>
+                        <div class="destination-info">
+                            <h3>Prague, Czech Republic</h3>
+                            <p>Fairy-tale architecture and rich history in the heart of Europe.</p>
+                            <div class="price">From Rs 2,67,000</div>
+                            <a href="#" class="btn">View Details</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Wanderlust</h3>
+                    <p>Your gateway to unforgettable travel experiences and adventures around the globe.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-pinterest"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="destinations.html">Destinations</a></li>
+                        <li><a href="dashboard.html">Dashboard</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="profile.html">My Profile</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Our Services</h3>
+                    <ul>
+                        <li><a href="#">Flight Booking</a></li>
+                        <li><a href="#">Hotel Reservation</a></li>
+                        <li><a href="#">Vacation Packages</a></li>
+                        <li><a href="#">Cruise Deals</a></li>
+                        <li><a href="#">Car Rentals</a></li>
+                        <li><a href="#">Travel Insurance</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> B 207B Bhaskaracharya Building</li>
+                        <li><i class="fas fa-phone"></i> +91 (222) 123-4567</li>
+                        <li><i class="fas fa-envelope"></i> wanderlust@gmail.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Wannderlust. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
