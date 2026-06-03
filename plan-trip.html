@@ -49,11 +49,11 @@
                     <div class="form-row">
                         <div class="form-group">
                             <label for="destination">Destination</label>
-                            <input type="text" id="destination" placeholder="Where do you want to go?" class="enhanced-input">
+                            <input type="text" name="destination" id="destination" placeholder="Where do you want to go?" class="enhanced-input">
                         </div>
                         <div class="form-group">
-                            <label for="travelers">Number of Travelers</label>
-                            <input type="number" id="travelers" min="1" value="2" class="enhanced-input">
+                            <label for="travelers" >Number of Travelers</label>
+                            <input type="number" name="travelers" id="travelers" min="1" value="2" class="enhanced-input">
                         </div>
                     </div>
                     
@@ -71,7 +71,7 @@
                     <div class="form-row">
                         <div class="form-group">
                             <label for="budget">Budget Range</label>
-                            <select id="budget" class="enhanced-select">
+                            <select id="budget" class="enhanced-select" name="budget">
                                 <option value="">Select Budget</option>
                                 <option value="economy">Economy</option>
                                 <option value="standard">Standard</option>
@@ -80,7 +80,7 @@
                         </div>
                         <div class="form-group">
                             <label for="trip-type">Trip Type</label>
-                            <select id="trip-type" class="enhanced-select">
+                            <select id="trip-type" class="enhanced-select" name="trip-type">
                                 <option value="">Select Trip Type</option>
                                 <option value="beach">Beach Vacation</option>
                                 <option value="city">City Exploration</option>
@@ -105,7 +105,7 @@
                     
                     <div class="form-group">
                         <label for="special-requests">Special Requests or Requirements</label>
-                        <textarea id="special-requests" rows="4" placeholder="Tell us about any special requirements or preferences for your trip..." class="enhanced-textarea"></textarea>
+                        <textarea id="special-requests" name="special-requests" rows="4" placeholder="Tell us about any special requirements or preferences for your trip..." class="enhanced-textarea"></textarea>
                     </div>
                     
                     <button type="submit" class="btn plan-trip-btn">Create My Trip Plan</button>
